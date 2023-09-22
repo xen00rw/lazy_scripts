@@ -1,8 +1,6 @@
 # Intro
-Hello, during reconnaissance we commonly need to search on paid tools (Censys, Shodan, Security Trails) in other to get some useful information about the target.<br>
-And sometimes we don't need to pay for that tool, since we just need a fast and easy information about it.<br>
-So here I introduce you the _Lazy Scripts_<br>
-It's basic javascript codes that can be save as an Bookmark on your browser in order to extract some information about this tools<br>
+Here I introduce you the _Lazy Scripts_<br>
+It's basic javascript codes that can be save as an Bookmark on your browser in order to extract some information about tools with useful information for recon phase of pentesting<br>
 
 #### [@phor3nsic](https://github.com/phor3nsic)
 
@@ -20,14 +18,12 @@ Steps:<br>
 <br>
 
 If you prefer, here is a video:<br>
-<img src="./contents/how_to.gif" alt="GIF" width="800" />
+<img src="./contents/how_to.gif" alt="GIF" width="600" />
 
 # Codes
-Let's go to the interesting part!! <br>
 
 <details><summary><h6>Censys Search</h6></summary>
-
-URL used: https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q=google.com <br>
+<p>URL used: https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q=google.com</p><br>
 
 ```javascript
 javascript: (function() {
@@ -49,12 +45,11 @@ javascript: (function() {
 	setTimeout(writeResults, 3000);
 })();
 ```
-
 </details>
 
 <details><summary><h6>Security Trails Search</h6></summary> 
-
-URL used: https://securitytrails.com/domain/example.com/dns
+<p>URL used: https://securitytrails.com/domain/example.com/dns</p><br>
+<p>Requirements: Be logged in</p><br>
 
 ```javascript
 javascript: (function() {
@@ -78,6 +73,5 @@ javascript: (function() {
   setTimeout(writeResults, 3000);
 })();
 ```
-
-<details>
+</details>
 
