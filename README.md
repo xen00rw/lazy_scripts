@@ -48,6 +48,68 @@ javascript: (function() {
 ```
 </details>
 
+<details><summary><h6>[Censys Search] New Search</h6></summary>
+<a><b>URL used: </b>https://platform.censys.io/search?q=host.services.cert.name%3A+"example.com"</a><br>
+<a><b>Description: </b>This script will get all the IPs from the current page of Censys search.</a><br><br>
+
+```javascript
+javascript: (function() {
+    var divs = document.getElementsByClassName("rAnPY");
+    var notes = divs[0].getElementsByClassName("apoUv");
+    const results = new Set;
+    for (var i = 0; i < notes.length; i++) {
+        var ip = notes[i].textContent;
+        var result = ip;
+        results.add(result);
+    }
+
+    function writeResults() {
+        document.write('<button onclick="history.go(0);">Reload Page</button><br>');
+        results.forEach(function(t) {
+            document.write(t + "<br>")
+        })
+    }
+    setTimeout(writeResults, 3000);
+})();
+```
+</details>
+
+<details><summary><h6>[Security Trails] Extract Ips from DNS History Subdomains</h6></summary> 
+<a><b>URL used: </b>https://securitytrails.com/domain/example.com/history/a</a><br>
+<a><b>Description: </b>This script will extract all IPs plus the hostname present on the current page of Security Trails IP history search.</a><br>
+<a><b>Requirements: </b>Be logged in</a><br><br>
+
+```javascript
+javascript: (function() {
+    var divs = document.getElementsByTagName("tr");
+    const resultsgrep = new Set();
+    for (var i = 1; i < divs.length; i++) {
+        var anchors = divs[i].getElementsByTagName("a");
+        for (var j = 0; j < anchors.length; j++) {
+            let note = anchors[j].textContent.trim();
+            let currentUrl = window.location.href;
+            let valueUrl = currentUrl.match(/\/domain\/(.*?)\/history\//)[1];
+            console.log(valueUrl);
+            let extracted = note.replace(/.*\/domain\/([^\/]+)\/dns.*/, '$1');
+            let extracted2 = extracted + " - " + valueUrl;
+            console.log(extracted2);
+            if (extracted2) {
+                resultsgrep.add(extracted2);
+            }
+        }
+    }
+
+    function writeResults() {
+        document.write('<button onclick="location.reload()">Reload Page</button><br>');
+        resultsgrep.forEach(function(t) {
+            document.write(t + "<br>");
+        });
+    }
+    setTimeout(writeResults, 3000);
+})();
+```
+</details>
+
 <details><summary><h6>[Security Trails] Search Subdomains</h6></summary> 
 <a><b>URL used: </b>https://securitytrails.com/domain/example.com/dns</a><br>
 <a><b>Description: </b>This script will extract all subdomains present on the current page of Security Trails subdomains search.</a><br>
