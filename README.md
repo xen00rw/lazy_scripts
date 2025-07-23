@@ -215,3 +215,30 @@ javascript: (function() {
 ```
 
 </details>
+
+<details><summary><h6>[Hunter.io] Domain Search - Email addresses</h6></summary>
+<a><b>URL: </b>https://hunter.io/search/domain.com</a><br>
+<a><b>Description: </b>Hunter.io helps find and verify professional email addresses associated with a domain.</a><br><br>
+
+```javascript
+javascript:(function() {
+	var divs = document.getElementsByClassName("ds-result__email");
+	const results = new Set();
+
+	for (var i = 0; i < divs.length; i++) {
+		var email = divs[i].textContent.trim();
+		results.add(email);
+	}
+
+	function writeResults() {
+		document.write('<button onclick="location.reload()">Reload Page</button><br>');
+		results.forEach(function(email) {
+			document.write(email + "<br>");
+		});
+	}
+
+	setTimeout(writeResults, 3000);
+})();
+```
+
+</details>
